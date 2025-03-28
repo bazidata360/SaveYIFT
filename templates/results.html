@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <style>
+        .video-container {
+            display: flex;
+            gap: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .thumbnail {
+            width: 400px;
+            border-radius: 8px;
+        }
+        .video-info {
+            flex: 1;
+        }
+        .video-title {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: var(--secondary);
+        }
+        .video-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        .video-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .download-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #cc0000;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="video-container">
+        <img class="thumbnail" src="{{ video.thumbnail }}" alt="{{ video.title }}">
+        
+        <div class="video-info">
+            <h1 class="video-title">{{ video.title }}</h1>
+            
+            <div class="video-meta">
+                <span><i class="fas fa-user"></i> {{ video.uploader }}</span>
+                <span><i class="fas fa-eye"></i> {{ "{:,}".format(video.views) }} views</span>
+                <span><i class="fas fa-clock"></i> {{ video.duration//60 }}:{{ '%02d' % (video.duration%60) }}</span>
+            </div>
+            
+            <form action="/download" method="post">
+                <input type="hidden" name="video_url" value="{{ video.url }}">
+                <button type="submit" class="download-btn">
+                    <i class="fas fa-download"></i> Download Video
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

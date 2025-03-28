@@ -1,0 +1,389 @@
+{% extends "base.html" %}
+<!-- For the TikTok page -->
+{% block title %}SaveYIFT - TikTok Downloader{% endblock %}
+
+
+{% block head %}
+<style>
+    :root {
+        --primary: #2196F3;
+        --secondary: #f5f5f5;
+        --text: #333;
+        --light-text: #777;
+        --border: #e0e0e0;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background-color: var(--secondary);
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .hero {
+        text-align: center;
+        padding: 4rem 0 2rem;
+    }
+
+    .hero h1 {
+        font-size: 2.75rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+        font-weight: 600;
+    }
+
+    .hero p {
+        font-size: 1.25rem;
+        color: var(--light-text);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .search-section {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin: 2rem 0;
+    }
+
+    .search-box {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .search-box input {
+        width: 100%;
+        padding: 15px 20px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        transition: border 0.3s;
+    }
+
+    .search-box input:focus {
+        border-color: var(--primary);
+        outline: none;
+    }
+
+    .search-box button {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: background-color 0.3s;
+        width: 100%;
+    }
+
+    .search-box button:hover {
+        background-color: #0d8bf2;
+    }
+
+    .features-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        margin: 3rem 0;
+        flex-wrap: wrap;
+    }
+
+    .feature-card {
+        flex: 1 1 calc(33.333% - 2rem);
+        background-color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+        font-weight: 600;
+    }
+
+    .feature-card p {
+        color: var(--light-text);
+        font-size: 1rem;
+    }
+
+    .guide-section {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin: 3rem 0;
+    }
+
+    .guide-section h2 {
+        text-align: center;
+        color: var(--primary);
+        margin-bottom: 2rem;
+        font-weight: 600;
+    }
+
+    .steps-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .step:last-child {
+        border-bottom: none;
+    }
+
+    .step-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--primary);
+        min-width: 40px;
+    }
+
+    .step-content h4 {
+        margin: 0 0 0.5rem 0;
+        color: var(--primary);
+        font-weight: 600;
+    }
+
+    .step-content p {
+        margin: 0;
+        color: var(--light-text);
+    }
+
+    /* New FAQs section styles */
+    .faqs-section {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin: 3rem 0;
+    }
+
+    .faqs-section h2 {
+        text-align: center;
+        color: var(--primary);
+        margin-bottom: 2rem;
+        font-weight: 600;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem 0;
+    }
+
+    .faq-item:last-child {
+        border-bottom: none;
+    }
+
+    .faq-question {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+    }
+
+    .faq-answer {
+        color: var(--light-text);
+        margin: 0;
+    }
+
+    /* Responsive Design Adjustments */
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2.25rem;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+        }
+
+        .features-row {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-card {
+            flex: 1 1 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-box input {
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        .search-box button {
+            font-size: 1rem;
+        }
+
+        .steps-container {
+            gap: 1rem;
+        }
+
+        .step-number {
+            font-size: 1.5rem;
+        }
+
+        .faqs-section h2 {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero h1 {
+            font-size: 1.75rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+        }
+
+        .search-box input {
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        .search-box button {
+            padding: 12px;
+            font-size: 0.9rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            font-size: 0.875rem;
+        }
+
+        .step-number {
+            font-size: 1.25rem;
+        }
+
+        .faq-question {
+            font-size: 1.125rem;
+        }
+
+        .faq-answer {
+            font-size: 0.875rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="hero">
+            <h1><i class="fab fa-tiktok"></i> TikTok Video Downloader</h1>
+            <p>Download TikTok videos without watermark in HD quality</p>
+        </div>
+
+        <div class="search-section">
+            <div class="search-box">
+                <form action="/search" method="post">
+                    <input type="text" name="video_url" placeholder="Paste TikTok video URL here..." required>
+                    <button type="submit"><i class="fas fa-download"></i> Download Now</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="features-row">
+            <div class="feature-card">
+                <h3>Unlimited Downloads</h3>
+                <p>Save as many TikTok videos as you need - without any limits.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>No Watermark!</h3>
+                <p>Download TikTok videos without any watermark, keeping the original content intact.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>HD Quality</h3>
+                <p>Download TikTok videos in HD resolution for the best viewing experience.</p>
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2>How to Download TikTok Videos Without Watermark</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Find a Video</h4>
+                        <p>Play the TikTok video you'd like to save to your device.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Copy the Link</h4>
+                        <p>Click on the video URL in your browser's address bar and copy it.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Save Video</h4>
+                        <p>Paste the copied link into the search box above and click "Download Now" to get your video without watermark.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New FAQs section -->
+        <div class="faqs-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3 class="faq-question">What video formats are available?</h3>
+                <p class="faq-answer">We offer downloads in MP4 format for video content and MP3 for audio-only downloads.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Is there a limit on download size or quantity?</h3>
+                <p class="faq-answer">No, you can download as many videos as you need without any size or quantity restrictions.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Are your services completely free?</h3>
+                <p class="faq-answer">Yes, our basic download services are completely free to use.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">How long does it take to process a download?</h3>
+                <p class="faq-answer">Most downloads are processed within seconds, depending on the video size and server load.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Is it safe to use your service?</h3>
+                <p class="faq-answer">Yes, we prioritize user security and privacy. We don't store any of your downloaded videos.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Do you have mobile apps available?</h3>
+                <p class="faq-answer">Currently, we only offer a web-based service, but it's fully responsive and works on all mobile devices.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Can I download videos from other platforms?</h3>
+                <p class="faq-answer">At this time, our service is specifically designed for TikTok video downloads.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ video_details.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            word-wrap: break-word;
+        }
+        .thumbnail {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .video-details {
+            margin-top: 20px;
+            text-align: left;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        .video-details p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+        .download-btn {
+            padding: 12px 25px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #cc0000;
+        }
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ video_details.title }}</h1>
+        <img class="thumbnail" src="{{ video_details.thumbnail_url }}" alt="Video Thumbnail">
+        
+        <div class="meta-info">
+            <span>Views: {{ video_details.view_count }}</span>
+            <span>Duration: {{ video_details.duration }}</span>
+        </div>
+        
+        <div class="video-details">
+            <p><strong>Description:</strong></p>
+            <p>{{ video_details.description }}</p>
+        </div>
+        
+        <form action="/download" method="post">
+            <input type="hidden" name="video_url" value="{{ video_details.video_url }}">
+            <button type="submit" class="download-btn">Download Video</button>
+        </form>
+    </div>
+</body>
+</html>

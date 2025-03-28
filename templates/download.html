@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download {{ video_title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .thumbnail {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .video-details {
+            margin-top: 20px;
+            text-align: left;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ video_title }}</h1>
+        <img class="thumbnail" src="{{ thumbnail_url }}" alt="Video Thumbnail">
+        <div class="video-details">
+            <p><strong>Description:</strong> {{ video_description }}</p>
+            <p><strong>Views:</strong> {{ view_count }}</p>
+        </div>
+        <form action="{{ video_path }}" method="get">
+            <button type="submit">Download Video</button>
+        </form>
+    </div>
+</body>
+</html>
