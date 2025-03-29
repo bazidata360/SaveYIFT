@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, Response,send_from_directory
 import yt_dlp as youtube_dl
 import requests
 import io
@@ -292,6 +292,10 @@ def instagram_home():
 @app.route('/privacy-policy')
 def privacy_policy():
     return render_template('privacy_policy.html', current_year=datetime.now().year)
+
+@app.route('/ads.txt')
+def ads_txt():
+    return send_from_directory(os.path.abspath(os.getcwd()), 'ads.txt')
 
 
 
