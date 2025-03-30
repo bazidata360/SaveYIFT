@@ -180,7 +180,7 @@ def download_youtube_video(url):
     ydl_opts = {
         'format': 'bestvideo+bestaudio/best',  # Select best available format
         'quiet': True,
-        'cookiefile': COOKIES_FILE
+        # 'cookiefile': COOKIES_FILE
     }
 
     buffer = io.BytesIO()
