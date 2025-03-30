@@ -178,8 +178,7 @@ def get_youtube_info(url):
 
 def download_youtube_video(url):
     ydl_opts = {
-    'format': 'bestvideo+bestaudio/best',
-    'quiet': True,
+    'format': 'best', 'quiet': True,
     'cookiefile': '/home/ubuntu/SaveYIFT/cookies.txt'  # Correct path
 }
 
