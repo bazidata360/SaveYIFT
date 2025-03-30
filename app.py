@@ -178,7 +178,7 @@ def get_youtube_info(url):
 
 def download_youtube_video(url):
     ydl_opts = {
-        'format': 'best', 'quiet': True,  # Select best available format
+        'format': 'bestvideo+bestaudio/best',  # Select best available format
         'quiet': True,
         'cookiefile': COOKIES_FILE, 
         'outtmpl': 'temp_video.%(ext)s'
