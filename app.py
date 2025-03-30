@@ -156,7 +156,7 @@ def download_facebook_video(url):
 # YouTube Functions
 # ======================
 
-COOKIES_FILE = "cookies.txt"  # Make sure this file exists in the same directory
+COOKIES_FILE = "/cookies.txt"  # Make sure this file exists in the same directory
 
 def get_youtube_info(url):
     ydl_opts = {
@@ -178,7 +178,8 @@ def get_youtube_info(url):
 
 def download_youtube_video(url):
     ydl_opts = {
-    'format': 'best', 'quiet': True,
+    'format': 'bestvideo+bestaudio/best',
+    'quiet': True,
     'cookiefile': '/home/ubuntu/SaveYIFT/cookies.txt'  # Correct path
 }
 
