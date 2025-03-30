@@ -178,9 +178,9 @@ def get_youtube_info(url):
 
 def download_youtube_video(url):
     ydl_opts = {
-        'format': 'best',
+        'format': 'bestvideo+bestaudio/best',  # Select best available format
         'quiet': True,
-        'cookiefile': COOKIES_FILE,  # Add cookies for authentication
+        'cookiefile': COOKIES_FILE, 
         'outtmpl': 'temp_video.%(ext)s'
     }
 
@@ -198,6 +198,7 @@ def download_youtube_video(url):
         info = ydl.extract_info(url, download=True)
         buffer.seek(0)
         return buffer, info['title']
+
 
 # ======================
 # TikTok Functions
