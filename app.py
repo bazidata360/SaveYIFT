@@ -155,15 +155,8 @@ def download_facebook_video(url):
 # ======================
 # YouTube Functions
 # ======================
-
-COOKIES_FILE = "/cookies.txt"  # Make sure this file exists in the same directory
-
 def get_youtube_info(url):
-    ydl_opts = {
-        'quiet': True,
-        'extract_flat': False,
-        'cookiefile': COOKIES_FILE  # Add cookies to authenticate
-    }
+    yt_dlp = {'quiet': True, 'extract_flat': False}
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=False)
         return {
@@ -177,12 +170,7 @@ def get_youtube_info(url):
         }
 
 def download_youtube_video(url):
-    ydl_opts = {
-    'format': 'bestvideo+bestaudio/best',
-    'quiet': True,
-    'cookiefile': '/home/ubuntu/SaveYIFT/cookies.txt'  # Correct path
-}
-
+    ydl_opts = {'format': 'best', 'quiet': True}
     buffer = io.BytesIO()
 
     def progress_hook(d):
@@ -192,11 +180,12 @@ def download_youtube_video(url):
             os.unlink(d['filename'])
 
     ydl_opts['progress_hooks'] = [progress_hook]
+    ydl_opts['outtmpl'] = 'temp_video.%(ext)s'
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
         buffer.seek(0)
-        return buffer, info['title']
+        return buffer, sanitize_filename(info['title'])
 
 
 # ======================
