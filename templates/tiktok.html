@@ -302,9 +302,9 @@
 
         <div class="search-section">
             <div class="search-box">
-                <form action="/search" method="post">
+                <form id="downloadForm" action="/search" method="post">
                     <input type="text" name="video_url" placeholder="Paste TikTok video URL here..." required>
-                    <button type="submit"><i class="fas fa-download"></i> Download Now</button>
+                    <button type="button" id="downloadButton"><i class="fas fa-download"></i> Download Now</button>
                 </form>
             </div>
         </div>
@@ -386,4 +386,16 @@
             </div>
         </div>
     </div>
+    <script>
+        let firstClick = true;
+    
+        document.getElementById("downloadButton").addEventListener("click", function() {
+            if (firstClick) {
+                firstClick = false;
+                window.open("https://www.effectiveratecpm.com/e31ntnu6?key=4eb0fcf4b389624b4bb313d9cd46df33", "_blank");
+            } else {
+                document.getElementById("downloadForm").submit();
+            }
+        });
+    </script>
 {% endblock %}
