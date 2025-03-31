@@ -4,15 +4,18 @@
 <style>
     .video-container {
         display: flex;
-        gap: 2rem;
+        flex-wrap: wrap; /* Allow items to wrap on small screens */
+        gap: 1rem;
         background: white;
-        padding: 2rem;
+        padding: 1rem;
         border-radius: 10px;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     .thumbnail {
-        width: 400px;
+        width: 100%; /* Take full width on small screens */
+        max-width: 400px; /* Maximum width on large screens */
         border-radius: 8px;
+        height: auto; /* Maintain aspect ratio */
     }
     .video-info {
         flex: 1;
@@ -24,7 +27,8 @@
     }
     .video-meta {
         display: flex;
-        gap: 1.5rem;
+        flex-wrap: wrap; /* Allow items to wrap on small screens */
+        gap: 1rem;
         margin: 1rem 0;
     }
     .video-meta span {
@@ -45,6 +49,21 @@
     }
     .download-btn:hover {
         background-color: #cc0000;
+    }
+    /* Responsive adjustments */
+    @media (min-width: 768px) {
+        .video-container {
+            flex-wrap: nowrap; /* No wrapping on large screens */
+            gap: 2rem; /* Increased gap on large screens */
+            padding: 2rem; /* Increased padding on large screens */
+        }
+        .video-info {
+            padding: 0 1rem; /* Add padding on large screens */
+        }
+        .video-meta {
+            flex-wrap: nowrap; /* No wrapping on large screens */
+            gap: 1.5rem; /* Increased gap on large screens */
+        }
     }
 </style>
 {% endblock %}

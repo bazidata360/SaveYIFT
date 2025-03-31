@@ -15,7 +15,10 @@
     
     
      <meta name="twitter:description" content="Download videos from YouTube, TikTok, Facebook, and Instagram with SaveYIFT easily.">
-    
+    <!-- Monetag
+    <meta name="monetag" content="ea60d47c2527df338bdec74e8399fde7">
+   
+    <script src="https://kulroakonsu.net/88/tag.min.js" data-zone="139886" async data-cfasync="false"></script> -->
     
     <link rel="icon" href="static/background_removed.png" type="image/x-icon">
     <title>
@@ -29,7 +32,7 @@
             --light: #f8f9fa;
             --tiktok-pink: #2196F3;
         }
-
+    
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -37,7 +40,7 @@
             background-color: #f5f5f5;
             color: #333;
         }
-
+    
         header {
             background-color: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -46,146 +49,126 @@
             top: 0;
             z-index: 100;
         }
-
+    
         .navbar {
-            max-width: 1200px;
+            max-width: 100%; /* Ensure the navbar stretches across the full width */
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
         }
-
+    
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary);
         }
-
+    
         .nav-links {
             display: flex;
             gap: 1.5rem;
+            flex-grow: 1; /* Allow nav-links to take up remaining space */
+            justify-content: flex-end; /* Align links to the right */
         }
-
+    
         .nav-links a {
             color: var(--primary);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
             padding: 5px 0;
-            /* border-bottom: 2px solid transparent; */
         }
-
+    
         .nav-links a:hover {
             color: var(--primary);
         }
-
+    
         .nav-links a.active {
             color: var(--primary);
             border-bottom: 2px solid var(--primary);
         }
-
+    
         .nav-links a.tiktok.active {
             color: var(--tiktok-pink);
             border-bottom: 2px solid var(--tiktok-pink);
         }
-
+    
         main {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 20px;
             min-height: 70vh;
         }
-
+    
         footer {
-        background-color: #2a2a2a; /* Darker background */
-        color: #f5f5f5; /* Light text color */
-        text-align: center;
-        padding: 0.1rem 0; /* More padding for better spacing */
-        margin-top: 3rem;
-        font-size: 1rem; /* Slightly bigger font */
-    }
-
-    .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .footer-section {
-        width: 100%;
-        max-width: 280px; /* Increase max-width for each section */
-        padding: 0 1rem;
-    }
-
-    .footer-section h4 {
-        color: var(--primary); /* Accent color for headings */
-        font-size: 1.1rem; /* Slightly larger font for headings */
-        margin-bottom: 0.8rem;
-    }
-
-    .footer-links a {
-        color: #f5f5f5; /* Light color for links */
-        text-decoration: none;
-        display: block;
-        margin: 0.5rem 0;
-        font-weight: 500; /* Make the links bolder */
-        transition: color 0.3s;
-    }
-
-    .footer-links a:hover {
-        color: var(--primary); /* Accent color on hover */
-    }
-
-    .social-icons i {
-        font-size: 1.75rem; /* Larger icons */
-        margin: 0 12px;
-        color: #f5f5f5;
-        transition: color 0.3s;
-    }
-
-    .social-icons i:hover {
-        color: var(--primary); /* Accent color on hover */
-    }
-
-    footer p {
-        margin-top: 2rem;
-        font-size: 0.875rem; /* Smaller font size for the copyright text */
-    }
-
-    /* Responsive adjustments for smaller screens */
-    @media (max-width: 768px) {
-        footer {
-            padding: 2rem 0;
-        }
-
-        .footer-content {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .footer-section {
-            max-width: 100%;
+            background-color: #2a2a2a;
+            color: #f5f5f5;
             text-align: center;
-        }
-
-        .footer-links a {
+            padding: 0.1rem 0;
+            margin-top: 3rem;
             font-size: 1rem;
         }
-    }
-
-        /* Responsive design adjustments */
+    
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    
+        .footer-section {
+            width: 100%;
+            max-width: 280px;
+            padding: 0 1rem;
+        }
+    
+        .footer-section h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+    
+        .footer-links a {
+            color: #f5f5f5;
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+    
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+    
+        .social-icons i {
+            font-size: 1.75rem;
+            margin: 0 12px;
+            color: #f5f5f5;
+            transition: color 0.3s;
+        }
+    
+        .social-icons i:hover {
+            color: var(--primary);
+        }
+    
+        footer p {
+            margin-top: 2rem;
+            font-size: 0.875rem;
+        }
+    
+        /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1rem;
             }
-
+    
             .nav-links {
                 display: flex;
                 flex-direction: column;
@@ -193,39 +176,39 @@
                 width: 100%;
                 text-align: left;
             }
-
+    
             .logo {
                 font-size: 1.25rem;
                 text-align: center;
                 margin-bottom: 1rem;
             }
-
+    
             .nav-links a {
                 font-size: 1rem;
                 width: 100%;
                 padding: 10px 0;
                 text-align: center;
             }
-
+    
             footer {
                 padding: 1rem 0;
             }
         }
-
+    
         @media (max-width: 480px) {
             .logo {
                 font-size: 1.125rem;
             }
-
+    
             .nav-links {
                 gap: 0.75rem;
             }
-
+    
             .nav-links a {
                 font-size: 0.9rem;
                 padding: 8px 0;
             }
-
+    
             footer {
                 padding: 1rem 0;
             }

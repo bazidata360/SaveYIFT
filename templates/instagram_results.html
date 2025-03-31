@@ -1,26 +1,21 @@
-<!-- Example for results.html -->
-<!-- {% if video.platform == 'instagram' %}
-    <h2>Instagram Video Details</h2>
-    <p><strong>Title:</strong> {{ video.title }}</p>
-    <p><strong>Uploader:</strong> {{ video.uploader }}</p>
-    <p><strong>Views:</strong> {{ video.views }}</p>
-    <p><img src="{{ video.thumbnail }}" alt="Video Thumbnail"></p>
-{% endif %} -->
 {% extends "base.html" %}
 
 {% block head %}
 <style>
     .video-container {
         display: flex;
-        gap: 2rem;
+        flex-direction: column; /* Default to column for smaller screens */
+        gap: 1rem;
         background: white;
-        padding: 2rem;
+        padding: 1rem;
         border-radius: 10px;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     .thumbnail {
-        width: 400px;
+        width: 100%; /* Take full width */
+        max-width: 400px; /* Maximum width */
         border-radius: 8px;
+        height: auto; /* Maintain aspect ratio */
     }
     .video-info {
         flex: 1;
@@ -32,7 +27,8 @@
     }
     .video-meta {
         display: flex;
-        gap: 1.5rem;
+        flex-wrap: wrap; /* Allow items to wrap for smaller screens */
+        gap: 1rem;
         margin: 1rem 0;
     }
     .video-meta span {
@@ -54,6 +50,18 @@
     .download-btn:hover {
         background-color: #cc0000;
     }
+    /* Responsive adjustments */
+    @media (min-width: 768px) {
+        .video-container {
+            flex-direction: row; /* Switch to row for larger screens */
+            gap: 2rem; /* Increased gap for larger screens */
+            padding: 2rem; /* Increased padding for larger screens */
+        }
+        .video-meta {
+            flex-wrap: nowrap; /* No wrapping for larger screens */
+            gap: 1.5rem; /* Increased gap for larger screens */
+        }
+    }
 </style>
 {% endblock %}
 
@@ -69,9 +77,6 @@
                 {% if video.views > 0 %}
                 <span><i class="fas fa-eye"></i> {{ "{:,}".format(video.views) }} views</span>
                 {% endif %}
-                <!-- {% if video.views > 0 %}
-                <span><i class="fas fa-eye"></i> {{ "{:,}".format(video.views) }} views</span>
-                {% endif %} -->
                 {% if video.duration > 0 %}
                 <span><i class="fas fa-clock"></i> {{ video.duration//60 }}:{{ '%02d' % (video.duration%60) }}</span>
                 {% endif %}

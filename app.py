@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, Response,send_from_directory
-import yt_dlp
+import yt_dlp as youtube_dl
 import requests
 import io
 import os
@@ -49,7 +49,7 @@ def get_instagram_info(url):
             'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         }
 
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=False)
             return {
                 'title': info.get('title', 'Instagram Video'),
@@ -80,7 +80,7 @@ def download_instagram_video(url):
 
         buffer = io.BytesIO()
 
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=True)
             filename = ydl.prepare_filename(info)
 
@@ -108,7 +108,7 @@ def get_facebook_info(url):
             'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         }
 
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=False)
             return {
                 'title': info.get('title', 'Facebook Video'),
@@ -138,7 +138,7 @@ def download_facebook_video(url):
 
         buffer = io.BytesIO()
 
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=True)
             filename = ydl.prepare_filename(info)
 
@@ -155,9 +155,10 @@ def download_facebook_video(url):
 # ======================
 # YouTube Functions
 # ======================
+
 def get_youtube_info(url):
-    yt_dlp = {'quiet': True, 'extract_flat': False}
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    ydl_opts = {'quiet': True, 'extract_flat': False}
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=False)
         return {
             'title': info.get('title', 'No title'),
@@ -170,7 +171,12 @@ def get_youtube_info(url):
         }
 
 def download_youtube_video(url):
-    ydl_opts = {'format': 'best', 'quiet': True}
+    ydl_opts = {
+    'format': 'best',  # This selects the best format with both video & audio
+    'quiet': True,
+    'outtmpl': 'temp_video.%(ext)s'
+}
+
     buffer = io.BytesIO()
 
     def progress_hook(d):
@@ -182,7 +188,7 @@ def download_youtube_video(url):
     ydl_opts['progress_hooks'] = [progress_hook]
     ydl_opts['outtmpl'] = 'temp_video.%(ext)s'
 
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
         buffer.seek(0)
         return buffer, sanitize_filename(info['title'])
@@ -219,7 +225,7 @@ def get_tiktok_info(url):
             'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         }
 
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=False)
             return {
                 'title': info.get('title', 'TikTok Video'),
@@ -255,7 +261,7 @@ def download_tiktok_video(url):
 
         buffer = io.BytesIO()
 
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=True)
             filename = ydl.prepare_filename(info)
 
