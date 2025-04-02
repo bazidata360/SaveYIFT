@@ -212,6 +212,55 @@
             footer {
                 padding: 1rem 0;
             }
+            .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+    }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                text-align: left;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+                width: 100%;
+                padding: 10px 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
         }
     </style>
     {% block head %}{% endblock %}
@@ -223,6 +272,13 @@
                 <a href="/" style="text-decoration: none; color: inherit;">SaveYIFT</a>
             </div>
             
+            <!-- Hamburger Icon for mobile screens -->
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
             <div class="nav-links">
                 <a href="/" class="{% if active_page == '/' %}active{% endif %}">
                     <i class="fab fa-youtube platform-icon"></i>YouTube
@@ -270,5 +326,12 @@
         </div>
         <p>&copy; {{ current_year }} SaveYIFT. All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+        }
+    </script>
 </body>
 </html>
