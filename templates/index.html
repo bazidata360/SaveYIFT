@@ -17,7 +17,7 @@
             line-height: 1.6;
             color: var(--text);
             background-color: var(--secondary);
-            margin: 0;
+            margin: 1px;
             padding: 0;
         }
 
@@ -207,6 +207,17 @@
             color: var(--light-text);
             margin: 0;
         }
+        .ad-container
+    {
+        width: 100%;
+            padding: 15px 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            transition: border 0.3s;
+
+    }
 
         /* Responsive Design Adjustments */
         @media (max-width: 768px) {
@@ -229,6 +240,10 @@
             }
 
             .search-box input {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            .ad-container{
                 padding: 10px;
                 font-size: 0.9rem;
             }
@@ -260,6 +275,11 @@
             }
 
             .search-box input {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            .ad-container
+            {
                 padding: 10px;
                 font-size: 0.9rem;
             }
@@ -295,7 +315,7 @@
 {% block content %}
 
 <div class="ad-container">
-    <iframe src="https://seriouspawailment.com/vkwsdnztu?key=e05d0968369b1a355da357768a14d118" width="728" height="400" frameborder="0" scrolling="no"></iframe>
+    <iframe src="https://seriouspawailment.com/vkwsdnztu?key=e05d0968369b1a355da357768a14d118" width=100% frameborder="0" scrolling="no"></iframe>
 </div>
 <!-- <div class="ad-container">
     <iframe src="https://seriouspawailment.com/e31ntnu6?key=4eb0fcf4b389624b4bb313d9cd46df33" width="728" height="790" frameborder="0" scrolling="no"></iframe>
