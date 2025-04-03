@@ -152,10 +152,6 @@ def download_facebook_video(url):
     except Exception as e:
         raise Exception(f"Failed to download Facebook video: {str(e)}")
 
-# ======================
-# YouTube Functions
-# ======================
-
 def get_youtube_info(url):
     ydl_opts = {'quiet': True, 'extract_flat': False}
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
@@ -171,12 +167,7 @@ def get_youtube_info(url):
         }
 
 def download_youtube_video(url):
-    ydl_opts = {
-    'format': 'best',  # This selects the best format with both video & audio
-    'quiet': True,
-    'outtmpl': 'temp_video.%(ext)s'
-}
-
+    ydl_opts = {'format': 'best', 'quiet': True}
     buffer = io.BytesIO()
 
     def progress_hook(d):
