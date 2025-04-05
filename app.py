@@ -272,11 +272,11 @@ def download_tiktok_video(url):
 
 @app.route('/')
 def home():
-    return render_template('index.html', current_year=datetime.now().year)
-
-@app.route('/tiktok')
-def tiktok_home():
     return render_template('tiktok.html', current_year=datetime.now().year)
+
+# @app.route('/tiktok')
+# def tiktok_home():
+#     return render_template('tiktok.html', current_year=datetime.now().year)
 
 @app.route('/facebook')
 def facebook_home():
