@@ -5,293 +5,313 @@
 
 
 {% block head %}
-    <style>
-        :root {
-            --primary: #2196F3;
-            --secondary: #f5f5f5;
-            --text: #333;
-            --light-text: #777;
-            --border: #e0e0e0;
-        }
+<style>
+    :root {
+        --primary: #2196F3;
+        --secondary: #f5f5f5;
+        --text: #333;
+        --light-text: #777;
+        --border: #e0e0e0;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background-color: var(--secondary);
-            margin: 0;
-            padding: 0;
-        }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background-color: var(--secondary);
+        margin: 1px;
+        padding: 0;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
 
-        .hero {
-            text-align: center;
-            padding: 4rem 0 2rem;
-        }
+    .hero {
+        text-align: center;
+        padding: 4rem 0 2rem;
+    }
 
-        .hero h1 {
-            font-size: 2.75rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-            font-weight: 600;
-        }
+    .hero h1 {
+        font-size: 2.75rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+        font-weight: 600;
+    }
 
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--light-text);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    .hero p {
+        font-size: 1.25rem;
+        color: var(--light-text);
+        max-width: 600px;
+        margin: 0 auto;
+    }
 
-        .search-section {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin: 2rem 0;
-        }
+    .search-section {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin: 2rem 0;
+    }
 
-        .search-box {
-            max-width: 700px;
-            margin: 0 auto;
-        }
+    .search-box {
+        max-width: 700px;
+        margin: 0 auto;
+    }
 
-        .search-box input {
-            width: 100%;
+    .search-box input {
+        width: 100%;
+        padding: 15px 20px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        transition: border 0.3s;
+    }
+
+    .search-box input:focus {
+        border-color: var(--primary);
+        outline: none;
+    }
+
+    .search-box button {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: background-color 0.3s;
+        width: 100%;
+    }
+
+    .search-box button:hover {
+        background-color: #0d8bf2;
+    }
+
+    .features-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        margin: 3rem 0;
+        flex-wrap: wrap;
+    }
+
+    .feature-card {
+        flex: 1 1 calc(33.333% - 2rem);
+        background-color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+        font-weight: 600;
+    }
+
+    .feature-card p {
+        color: var(--light-text);
+        font-size: 1rem;
+    }
+
+    .guide-section {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin: 3rem 0;
+    }
+
+    .guide-section h2 {
+        text-align: center;
+        color: var(--primary);
+        margin-bottom: 2rem;
+        font-weight: 600;
+    }
+
+    .steps-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .step:last-child {
+        border-bottom: none;
+    }
+
+    .step-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--primary);
+        min-width: 40px;
+    }
+
+    .step-content h4 {
+        margin: 0 0 0.5rem 0;
+        color: var(--primary);
+        font-weight: 600;
+    }
+
+    .step-content p {
+        margin: 0;
+        color: var(--light-text);
+    }
+
+    /* New FAQs section styles */
+    .faqs-section {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin: 3rem 0;
+    }
+
+    .faqs-section h2 {
+        text-align: center;
+        color: var(--primary);
+        margin-bottom: 2rem;
+        font-weight: 600;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem 0;
+    }
+
+    .faq-item:last-child {
+        border-bottom: none;
+    }
+
+    .faq-question {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+    }
+
+    .faq-answer {
+        color: var(--light-text);
+        margin: 0;
+    }
+    .ad-container
+    {
+        width: 100%;
             padding: 15px 20px;
             border: 1px solid var(--border);
             border-radius: 8px;
             font-size: 1rem;
             margin-bottom: 1.5rem;
             transition: border 0.3s;
-        }
 
-        .search-box input:focus {
-            border-color: var(--primary);
-            outline: none;
-        }
+    }
 
-        .search-box button {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background-color 0.3s;
-            width: 100%;
+    /* Responsive Design Adjustments */
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2.25rem;
         }
+        .ad-container{
+                padding: 10px;
+                font-size: 0.9rem;
+            }
 
-        .search-box button:hover {
-            background-color: #0d8bf2;
+        .hero p {
+            font-size: 1.125rem;
         }
 
         .features-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 2rem;
-            margin: 3rem 0;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
         }
 
         .feature-card {
-            flex: 1 1 calc(33.333% - 2rem);
-            background-color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            margin-bottom: 2rem;
+            flex: 1 1 100%;
+            margin-bottom: 1.5rem;
         }
 
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-            font-weight: 600;
+        .search-box input {
+            padding: 10px;
+            font-size: 0.9rem;
         }
 
-        .feature-card p {
-            color: var(--light-text);
+        .search-box button {
             font-size: 1rem;
         }
 
-        .guide-section {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin: 3rem 0;
-        }
-
-        .guide-section h2 {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
         .steps-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .step {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .step:last-child {
-            border-bottom: none;
+            gap: 1rem;
         }
 
         .step-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary);
-            min-width: 40px;
-        }
-
-        .step-content h4 {
-            margin: 0 0 0.5rem 0;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .step-content p {
-            margin: 0;
-            color: var(--light-text);
-        }
-
-        /* New FAQs section styles */
-        .faqs-section {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin: 3rem 0;
+            font-size: 1.5rem;
         }
 
         .faqs-section h2 {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 2rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero h1 {
+            font-size: 1.75rem;
         }
 
-        .faq-item {
-            border-bottom: 1px solid var(--border);
-            padding: 1.5rem 0;
+        .hero p {
+            font-size: 1rem;
         }
 
-        .faq-item:last-child {
-            border-bottom: none;
+        .search-box input {
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        .search-box button {
+            padding: 12px;
+            font-size: 0.9rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            font-size: 0.875rem;
+        }
+
+        .step-number {
+            font-size: 1.25rem;
         }
 
         .faq-question {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
+            font-size: 1.125rem;
         }
 
         .faq-answer {
-            color: var(--light-text);
-            margin: 0;
+            font-size: 0.875rem;
         }
-
-        /* Responsive Design Adjustments */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.25rem;
-            }
-
-            .hero p {
-                font-size: 1.125rem;
-            }
-
-            .features-row {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .feature-card {
-                flex: 1 1 100%;
-                margin-bottom: 1.5rem;
-            }
-
-            .search-box input {
+        .ad-container
+            {
                 padding: 10px;
                 font-size: 0.9rem;
             }
-
-            .search-box button {
-                font-size: 1rem;
-            }
-
-            .steps-container {
-                gap: 1rem;
-            }
-
-            .step-number {
-                font-size: 1.5rem;
-            }
-
-            .faqs-section h2 {
-                font-size: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.75rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .search-box input {
-                padding: 10px;
-                font-size: 0.9rem;
-            }
-
-            .search-box button {
-                padding: 12px;
-                font-size: 0.9rem;
-            }
-
-            .feature-card h3 {
-                font-size: 1.25rem;
-            }
-
-            .feature-card p {
-                font-size: 0.875rem;
-            }
-
-            .step-number {
-                font-size: 1.25rem;
-            }
-
-            .faq-question {
-                font-size: 1.125rem;
-            }
-
-            .faq-answer {
-                font-size: 0.875rem;
-            }
-        }
-    </style>
+    }
+</style>
 {% endblock %}
 
 {% block content %}

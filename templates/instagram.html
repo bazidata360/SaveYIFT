@@ -19,7 +19,7 @@
         line-height: 1.6;
         color: var(--text);
         background-color: var(--secondary);
-        margin: 0;
+        margin: 1px;
         padding: 0;
     }
 
@@ -209,12 +209,27 @@
         color: var(--light-text);
         margin: 0;
     }
+    .ad-container
+    {
+        width: 100%;
+            padding: 15px 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            transition: border 0.3s;
+
+    }
 
     /* Responsive Design Adjustments */
     @media (max-width: 768px) {
         .hero h1 {
             font-size: 2.25rem;
         }
+        .ad-container{
+                padding: 10px;
+                font-size: 0.9rem;
+            }
 
         .hero p {
             font-size: 1.125rem;
@@ -290,6 +305,11 @@
         .faq-answer {
             font-size: 0.875rem;
         }
+        .ad-container
+            {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
     }
 </style>
 {% endblock %}
