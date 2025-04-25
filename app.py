@@ -302,10 +302,10 @@ def search():
     platform = detect_platform(url)
 
     try:
-        if platform == 'youtube':
-            video = get_youtube_info(url)
-            return render_template('results.html', video=video, current_year=datetime.now().year)
-        elif platform == 'tiktok':
+        # if platform == 'youtube':
+        #     video = get_youtube_info(url)
+        #     return render_template('results.html', video=video, current_year=datetime.now().year)
+        if platform == 'tiktok':
             video = get_tiktok_info(url)
             return render_template('tiktok_results.html', video=video, current_year=datetime.now().year)
         elif platform == 'facebook':
